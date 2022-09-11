@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	var lineCounter int
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		line, err := reader.ReadString('\n')
@@ -23,6 +24,9 @@ func main() {
 			}
 		}
 
+		lineCounter = lineCounter + 1
 		fmt.Println(line)
 	}
+
+	fmt.Println(lineCounter)
 }
