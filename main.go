@@ -6,10 +6,11 @@ import (
 	"io"
 	"log"
 	"os"
+	"unicode/utf8"
 )
 
 func main() {
-	var lineCounter int
+	var lineCounter, characterCounter, byteCounter int
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		line, err := reader.ReadString('\n')
@@ -25,8 +26,12 @@ func main() {
 		}
 
 		lineCounter = lineCounter + 1
+		characterCounter = characterCounter + utf8.RuneCountInString(line)
+		byteCounter = byteCounter + len(line)
 		fmt.Println(line)
 	}
 
 	fmt.Println(lineCounter)
+	fmt.Println(characterCounter)
+	fmt.Println(byteCounter)
 }
