@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	var lineCounter, characterCounter, byteCounter int
+	var lineCounter, wordCounter, characterCounter, byteCounter int
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		line, err := reader.ReadString('\n')
@@ -26,12 +26,14 @@ func main() {
 		}
 
 		lineCounter = lineCounter + 1
+		wordCounter = wordCounter + countWords(line)
 		characterCounter = characterCounter + utf8.RuneCountInString(line)
 		byteCounter = byteCounter + len(line)
 		fmt.Println(line)
 	}
 
 	fmt.Println(lineCounter)
+	fmt.Println(wordCounter)
 	fmt.Println(characterCounter)
 	fmt.Println(byteCounter)
 }
