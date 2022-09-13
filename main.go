@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -10,6 +11,8 @@ import (
 )
 
 func main() {
+	flag.Parse()
+
 	var lineCounter, wordCounter, characterCounter, byteCounter int
 	reader := bufio.NewReader(os.Stdin)
 	for {
